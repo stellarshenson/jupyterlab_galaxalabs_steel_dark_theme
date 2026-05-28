@@ -110,4 +110,15 @@ fix: annoying problem of almost invisible text in stderr */
     margin-left: inherit;
 }
 
+/* override - compact file browser listing items */
+.jp-DirListing-item {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+}
+
+/* override - reduce gap between file browser toolbar icons */
+.jp-FileBrowser-toolbar::part(positioning-region) {
+    gap: 4px !important;
+}
+
 /* EOF */

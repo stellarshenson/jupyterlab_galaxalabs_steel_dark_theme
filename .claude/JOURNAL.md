@@ -36,3 +36,6 @@ This journal tracks substantive work on documents, diagrams, and documentation c
 
 11. **Task - Workflow jupyter-releaser Config**: Updated CI workflows per workspace JUPYTERLAB_EXTENSION.md guidelines<br>
     **Result**: Added `steps_to_skip: "build-changelog"` and `RH_SINCE_LAST_STABLE: 'true'` env to check-release.yml and prep-release.yml. These settings handle direct commit workflow (no PRs) by skipping changelog generation from PRs and using only semantic version tags for release detection.
+
+12. **Task - Compact File Browser Spacing** (v1.0.86): Reduced excessive padding between file browser listing items and toolbar icons<br>
+    **Result**: Added two CSS overrides to `style/custom.css`. Reduced `.jp-DirListing-item` vertical padding from 4px to 1px (item height 25px → 19px), making the file listing visibly more compact. Used `::part(positioning-region)` selector to target shadow DOM inside `JP-TOOLBAR` web component, reducing `.jp-FileBrowser-toolbar` icon gap from 12px to 4px (toolbar height 70px → 62px). Required `!important` on gap to override shadow DOM internal styles. Also updated `.claude/CLAUDE.md` to full init-project template with workspace imports and mandatory bans.
