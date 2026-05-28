@@ -1,10 +1,10 @@
-/*-----------------------------------------------------------------------------
+/* -----------------------------------------------------------------------------
 | Copyright (c) Max Klein.
 | Distributed under the terms of the Modified BSD License.
-|----------------------------------------------------------------------------*/
+|---------------------------------------------------------------------------- */
 
-@import "./custom.css";
-@import "./variables.css";
+@import url('./custom.css');
+@import url('./variables.css');
 
 /* Set the default typography for monospace elements */
 tt,

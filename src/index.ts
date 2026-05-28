@@ -10,11 +10,14 @@ import { IThemeManager } from '@jupyterlab/apputils';
  */
 const plugin: JupyterFrontEndPlugin<void> = {
   id: 'stellars_jupyterlab_sublime_theme:plugin',
-  description: 'Dark theme based on Sublime text editor default dark theme, tweaked by Stellars',
+  description:
+    'Dark theme based on Sublime text editor default dark theme, tweaked by Stellars',
   autoStart: true,
   requires: [IThemeManager],
   activate: (app: JupyterFrontEnd, manager: IThemeManager) => {
-    console.log('JupyterLab extension stellars_jupyterlab_sublime_theme is activated!');
+    console.log(
+      'JupyterLab extension stellars_jupyterlab_sublime_theme is activated!'
+    );
     const style = 'stellars_jupyterlab_sublime_theme/index.css';
 
     manager.register({

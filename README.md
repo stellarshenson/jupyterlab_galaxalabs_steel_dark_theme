@@ -8,7 +8,6 @@
 [![Brought To You By KOLOMOLO](https://img.shields.io/badge/Brought%20To%20You%20By-KOLOMOLO-00ffff?style=flat)](https://kolomolo.com)
 [![Donate PayPal](https://img.shields.io/badge/Donate-PayPal-blue?style=flat)](https://www.paypal.com/donate/?hosted_button_id=B4KPBJDLLXTSA)
 
-
 **Dark Gray-blue theme based on Sublime Text Editor**
 
 Dark Sublime Text Editor theme clone for jupyterlab based on [Sublime Text Editor](https://www.sublimetext.com).
@@ -21,7 +20,7 @@ Project is based on the latest [jupyterlab extension template](https://github.co
 
 ## Theme Colors
 
-Sublime dark theme is based upon a popular __Mariana__ theme (default dark theme of Sublime) with some modifications to not make the colors overly contrastive:
+Sublime dark theme is based upon a popular **Mariana** theme (default dark theme of Sublime) with some modifications to not make the colors overly contrastive:
 
 ## Requirements
 
@@ -50,6 +49,7 @@ pip uninstall stellars_jupyterlab_sublime_theme
 Note: You will need NodeJS to build the extension package.
 
 #### Dependencies
+
 - install nodejs with conda: `conda install nodejs`
 - install jupyterlab: `conda install jupyterlab`
 - install maketools: `conda install make`
@@ -59,7 +59,7 @@ Note: You will need NodeJS to build the extension package.
 
 - invoke `make` to build the `.whl` package
 - invoke `make clean` to run cleanup & uninstall
-- invoke `make install` to build and install extension 
+- invoke `make install` to build and install extension
 - invoke `make uninstall` to uninstall extension
 
 #### Development
