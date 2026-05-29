@@ -19,6 +19,7 @@
 }
 
 /* for code nodes, use a transparent style of scrollbar */
+/* stylelint-disable selector-class-pattern, no-duplicate-selectors */
 .CodeMirror-hscrollbar,
 .CodeMirror-vscrollbar {
   scrollbar-color: rgba(var(--jp-scrollbar-thumb-color), 0.5) transparent;

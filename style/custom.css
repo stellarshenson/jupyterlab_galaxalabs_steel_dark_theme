@@ -13,6 +13,7 @@ fix: annoying problem of almost invisible text in stderr */
   background-color: #b52318;
 }
 
+/* stylelint-disable selector-class-pattern */
 .cm-s-jupyter .CodeMirror-activeline-background {
   background: #323232;
 }
@@ -38,6 +39,7 @@ fix: annoying problem of almost invisible text in stderr */
 .cm-s-jupyter div.CodeMirror-selected {
   background: #214283;
 }
+/* stylelint-enable selector-class-pattern */
 
 .cm-s-jupyter span.cm-type {
   color: #abc;
