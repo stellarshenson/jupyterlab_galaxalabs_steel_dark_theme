@@ -4,3 +4,4 @@ node_modules
 **/package.json
 !/package.json
 stellars_jupyterlab_sublime_theme
+.claude

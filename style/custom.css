@@ -133,4 +133,9 @@ fix: annoying problem of almost invisible text in stderr */
   max-width: 65px !important;
 }
 
+/* override - suppress stuck pressed-state shadow on file browser toolbar buttons */
+.jp-FileBrowser-toolbar jp-button[aria-pressed='true'] {
+  box-shadow: none !important;
+}
+
 /* EOF */
