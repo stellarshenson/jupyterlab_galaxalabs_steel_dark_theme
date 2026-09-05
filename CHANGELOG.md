@@ -4,6 +4,12 @@
 
 <!-- <END NEW CHANGELOG ENTRY> -->
 
+## [1.0.93] - 2026-09-05
+
+### Changed
+
+- Theme menu entry renamed to `Steel Dark Theme`. Only the display name registered with `IThemeManager` changes - the repository, the npm package and the PyPI distribution keep their identifiers, so existing installations keep working
+
 ## [1.0.92] - 2026-07-02
 
 ### Fixed
