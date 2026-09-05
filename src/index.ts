@@ -21,7 +21,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
     const style = 'stellars_jupyterlab_sublime_theme/index.css';
 
     manager.register({
-      name: 'Steel Dark Theme',
+      name: 'Galaxa Dark Theme - Steel',
       themeScrollbars: true,
       isLight: false,
       load: () => manager.loadCSS(style),
