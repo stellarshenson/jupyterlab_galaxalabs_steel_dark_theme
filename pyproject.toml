@@ -3,7 +3,7 @@ requires = ["hatchling>=1.5.0", "jupyterlab>=4.0.0,<5", "hatch-nodejs-version>=0
 build-backend = "hatchling.build"
 
 [project]
-name = "stellars_jupyterlab_sublime_theme"
+name = "galaxalabs_jupyterlab_steel_dark_theme"
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.8"
@@ -33,23 +33,23 @@ source = "nodejs"
 fields = ["description", "authors", "urls", "keywords"]
 
 [tool.hatch.build.targets.sdist]
-artifacts = ["stellars_jupyterlab_sublime_theme/labextension"]
+artifacts = ["galaxalabs_jupyterlab_steel_dark_theme/labextension"]
 exclude = [".github", "binder"]
 
 [tool.hatch.build.targets.wheel.shared-data]
-"stellars_jupyterlab_sublime_theme/labextension" = "share/jupyter/labextensions/stellars_jupyterlab_sublime_theme"
-"install.json" = "share/jupyter/labextensions/stellars_jupyterlab_sublime_theme/install.json"
+"galaxalabs_jupyterlab_steel_dark_theme/labextension" = "share/jupyter/labextensions/galaxalabs_jupyterlab_steel_dark_theme"
+"install.json" = "share/jupyter/labextensions/galaxalabs_jupyterlab_steel_dark_theme/install.json"
 
 [tool.hatch.build.hooks.version]
-path = "stellars_jupyterlab_sublime_theme/_version.py"
+path = "galaxalabs_jupyterlab_steel_dark_theme/_version.py"
 
 [tool.hatch.build.hooks.jupyter-builder]
 dependencies = ["hatch-jupyter-builder>=0.5"]
 build-function = "hatch_jupyter_builder.npm_builder"
 ensured-targets = [
-    "stellars_jupyterlab_sublime_theme/labextension/package.json",
+    "galaxalabs_jupyterlab_steel_dark_theme/labextension/package.json",
 ]
-skip-if-exists = ["stellars_jupyterlab_sublime_theme/labextension/static/style.js"]
+skip-if-exists = ["galaxalabs_jupyterlab_steel_dark_theme/labextension/static/style.js"]
 
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
 build_cmd = "build:prod"
@@ -59,7 +59,7 @@ npm = ["jlpm"]
 build_cmd = "install:extension"
 npm = ["jlpm"]
 source_dir = "src"
-build_dir = "stellars_jupyterlab_sublime_theme/labextension"
+build_dir = "galaxalabs_jupyterlab_steel_dark_theme/labextension"
 
 [tool.jupyter-releaser.options]
 version_cmd = "hatch version"

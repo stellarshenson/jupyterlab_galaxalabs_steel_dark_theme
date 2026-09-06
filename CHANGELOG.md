@@ -4,6 +4,12 @@
 
 <!-- <END NEW CHANGELOG ENTRY> -->
 
+## [1.0.95] - 2026-09-06
+
+### Changed
+
+- Renamed into the galaxalabs family: the GitHub repository is now `jupyterlab_galaxalabs_steel_dark_theme` and the npm and PyPI distributions are `galaxalabs_jupyterlab_steel_dark_theme`. The previous distribution `stellars_jupyterlab_sublime_theme` is frozen at 1.0.94 and receives no further releases; installations of it must be replaced rather than upgraded
+
 ## [1.0.94] - 2026-09-05
 
 ### Changed

@@ -1,6 +1,6 @@
 <!-- @import /home/lab/workspace/.claude/CLAUDE.md -->
 
-# jupyterlab_stellars_sublime_theme Project Instructions
+# jupyterlab_galaxalabs_steel_dark_theme Project Instructions
 
 This file imports workspace-level configuration from `/home/lab/workspace/.claude/CLAUDE.md`.
 All workspace rules apply. Project-specific rules below strengthen or extend them.
@@ -23,9 +23,9 @@ The following workspace rules are STRICTLY ENFORCED for this project:
 
 JupyterLab theme extension providing a dark Sublime Text-inspired color scheme. Current version 1.0.83.
 
-- npm package: `stellars_jupyterlab_sublime_theme`
-- PyPI package: `stellars-jupyterlab-sublime-theme`
-- GitHub: `stellarshenson/jupyterlab_stellars_sublime_theme`
+- npm package: `galaxalabs_jupyterlab_steel_dark_theme`
+- PyPI package: `galaxalabs-jupyterlab-steel-dark-theme`
+- GitHub: `stellarshenson/jupyterlab_galaxalabs_steel_dark_theme`
 - Use `make publish` to build and publish to both registries
 - Use `make install` for local development builds
 

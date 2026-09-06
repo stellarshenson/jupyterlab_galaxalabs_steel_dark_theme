@@ -1,4 +1,4 @@
-# Making a new release of stellars_jupyterlab_sublime_theme
+# Making a new release of galaxalabs_jupyterlab_steel_dark_theme
 
 The extension can be published to `PyPI` and `npm` manually or using the [Jupyter Releaser](https://github.com/jupyter-server/jupyter_releaser).
 

@@ -6,9 +6,9 @@ author_name: Konrad Jelen
 has_binder: false
 has_settings: false
 kind: theme
-labextension_name: 'stellars_jupyterlab_sublime_theme'
+labextension_name: 'galaxalabs_jupyterlab_steel_dark_theme'
 project_short_description: Sublime dark theme tweaked by Stellars
-python_name: stellars_jupyterlab_sublime_theme
+python_name: galaxalabs_jupyterlab_steel_dark_theme
 repository: ''
 test: false
 

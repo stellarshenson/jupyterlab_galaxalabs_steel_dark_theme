@@ -29,10 +29,10 @@ jobs:
         set -eux
         python -m pip install .[test]
 
-        # pytest -vv -r ap --cov stellars_jupyterlab_sublime_theme
+        # pytest -vv -r ap --cov galaxalabs_jupyterlab_steel_dark_theme
 
         jupyter labextension list
-        jupyter labextension list 2>&1 | grep -ie "stellars_jupyterlab_sublime_theme.*OK"
+        jupyter labextension list 2>&1 | grep -ie "galaxalabs_jupyterlab_steel_dark_theme.*OK"
         python -m jupyterlab.browser_check
 
     - name: Package the extension
@@ -41,13 +41,13 @@ jobs:
 
         pip install build
         python -m build
-        pip uninstall -y "stellars_jupyterlab_sublime_theme" jupyterlab
+        pip uninstall -y "galaxalabs_jupyterlab_steel_dark_theme" jupyterlab
 
     - name: Upload extension packages
       uses: actions/upload-artifact@v4
       with:
         name: extension-artifacts
-        path: dist/stellars_jupyterlab_sublime_theme*
+        path: dist/galaxalabs_jupyterlab_steel_dark_theme*
         if-no-files-found: error
 
   test_isolated:
@@ -70,8 +70,8 @@ jobs:
         sudo rm -rf $(which node)
         sudo rm -rf $(which node)
 
-        pip install "jupyterlab>=4.0.0,<5" stellars_jupyterlab_sublime_theme*.whl
+        pip install "jupyterlab>=4.0.0,<5" galaxalabs_jupyterlab_steel_dark_theme*.whl
 
         jupyter labextension list
-        jupyter labextension list 2>&1 | grep -ie "stellars_jupyterlab_sublime_theme.*OK"
+        jupyter labextension list 2>&1 | grep -ie "galaxalabs_jupyterlab_steel_dark_theme.*OK"
         python -m jupyterlab.browser_check --no-browser-test

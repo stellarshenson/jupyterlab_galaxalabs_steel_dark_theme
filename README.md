@@ -1,9 +1,9 @@
-# Stellars Jupyterlab Sublime Theme
+# GalaxaLabs Steel Dark Theme
 
-[![GitHub Actions](https://github.com/stellarshenson/jupyterlab_stellars_sublime_theme/actions/workflows/build.yml/badge.svg)](https://github.com/stellarshenson/jupyterlab_stellars_sublime_theme/actions/workflows/build.yml)
-[![npm version](https://img.shields.io/npm/v/stellars_jupyterlab_sublime_theme.svg)](https://www.npmjs.com/package/stellars_jupyterlab_sublime_theme)
-[![PyPI version](https://img.shields.io/pypi/v/stellars-jupyterlab-sublime-theme.svg)](https://pypi.org/project/stellars-jupyterlab-sublime-theme/)
-[![Total PyPI downloads](https://static.pepy.tech/badge/stellars-jupyterlab-sublime-theme)](https://pepy.tech/project/stellars-jupyterlab-sublime-theme)
+[![GitHub Actions](https://github.com/stellarshenson/jupyterlab_galaxalabs_steel_dark_theme/actions/workflows/build.yml/badge.svg)](https://github.com/stellarshenson/jupyterlab_galaxalabs_steel_dark_theme/actions/workflows/build.yml)
+[![npm version](https://img.shields.io/npm/v/galaxalabs_jupyterlab_steel_dark_theme.svg)](https://www.npmjs.com/package/galaxalabs_jupyterlab_steel_dark_theme)
+[![PyPI version](https://img.shields.io/pypi/v/galaxalabs-jupyterlab-steel-dark-theme.svg)](https://pypi.org/project/galaxalabs-jupyterlab-steel-dark-theme/)
+[![Total PyPI downloads](https://static.pepy.tech/badge/galaxalabs-jupyterlab-steel-dark-theme)](https://pepy.tech/project/galaxalabs-jupyterlab-steel-dark-theme)
 [![JupyterLab 4](https://img.shields.io/badge/JupyterLab-4-orange.svg)](https://jupyterlab.readthedocs.io/en/stable/)
 [![Brought To You By KOLOMOLO](https://img.shields.io/badge/Brought%20To%20You%20By-KOLOMOLO-00ffff?style=flat)](https://kolomolo.com)
 [![Donate PayPal](https://img.shields.io/badge/Donate-PayPal-blue?style=flat)](https://www.paypal.com/donate/?hosted_button_id=B4KPBJDLLXTSA)
@@ -16,7 +16,7 @@ Base theme on which this one was built is the original [Jupyterlab Darcula theme
 
 Project is based on the latest [jupyterlab extension template](https://github.com/jupyterlab/extension-template) and built with with copier.
 
-![](https://github.com/stellarshenson/jupyterlab_stellars_sublime_theme/blob/master/screenshot-stellars-sublime.png?raw=true)
+![](https://github.com/stellarshenson/jupyterlab_galaxalabs_steel_dark_theme/blob/master/screenshot-steel-dark.png?raw=true)
 
 ## Theme Colors
 
@@ -31,7 +31,7 @@ Sublime dark theme is based upon a popular **Mariana** theme (default dark theme
 To install the extension, execute:
 
 ```bash
-pip install stellars_jupyterlab_sublime_theme
+pip install galaxalabs_jupyterlab_steel_dark_theme
 ```
 
 ## Uninstall
@@ -39,7 +39,7 @@ pip install stellars_jupyterlab_sublime_theme
 To remove the extension, execute:
 
 ```bash
-pip uninstall stellars_jupyterlab_sublime_theme
+pip uninstall galaxalabs_jupyterlab_steel_dark_theme
 ```
 
 ## Contributing
@@ -70,7 +70,7 @@ The `jlpm` command is JupyterLab's pinned version of
 
 ```bash
 # Clone the repo to your local environment
-# Change directory to the stellars_jupyterlab_sublime_theme directory
+# Change directory to the galaxalabs_jupyterlab_steel_dark_theme directory
 # Install package in development mode
 pip install -e "."
 # Link your development version of the extension with JupyterLab
@@ -99,12 +99,12 @@ jupyter lab build --minimize=False
 ### Development uninstall
 
 ```bash
-pip uninstall stellars_jupyterlab_sublime_theme
+pip uninstall galaxalabs_jupyterlab_steel_dark_theme
 ```
 
 In development mode, you will also need to remove the symlink created by `jupyter labextension develop`
 command. To find its location, you can run `jupyter labextension list` to figure out where the `labextensions`
-folder is located. Then you can remove the symlink named `stellars_jupyterlab_sublime_theme` within that folder.
+folder is located. Then you can remove the symlink named `galaxalabs_jupyterlab_steel_dark_theme` within that folder.
 
 ### Packaging the extension
 
