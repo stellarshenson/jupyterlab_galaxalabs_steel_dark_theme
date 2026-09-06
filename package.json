@@ -1,15 +1,15 @@
 {
-    "name": "stellars_jupyterlab_sublime_theme",
-    "version": "1.0.94",
+    "name": "galaxalabs_jupyterlab_steel_dark_theme",
+    "version": "1.0.95",
     "description": "Dark theme based on Sublime text editor default dark theme, tweaked by Stellars",
     "keywords": [
         "jupyter",
         "jupyterlab",
         "jupyterlab-extension"
     ],
-    "homepage": "https://github.com/stellarshenson/jupyterlab_stellars_sublime_theme",
+    "homepage": "https://github.com/stellarshenson/jupyterlab_galaxalabs_steel_dark_theme",
     "bugs": {
-        "url": "https://github.com/stellarshenson/jupyterlab_stellars_sublime_theme/issues"
+        "url": "https://github.com/stellarshenson/jupyterlab_galaxalabs_steel_dark_theme/issues"
     },
     "license": "BSD-3-Clause",
     "author": {
@@ -25,7 +25,7 @@
     "types": "lib/index.d.ts",
     "repository": {
         "type": "git",
-        "url": "https://github.com/stellarshenson/jupyterlab_stellars_sublime_theme.git"
+        "url": "https://github.com/stellarshenson/jupyterlab_galaxalabs_steel_dark_theme.git"
     },
     "scripts": {
         "build": "jlpm build:lib && jlpm build:labextension:dev",
@@ -37,7 +37,7 @@
         "clean": "jlpm clean:lib",
         "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
         "clean:lintcache": "rimraf .eslintcache .stylelintcache",
-        "clean:labextension": "rimraf stellars_jupyterlab_sublime_theme/labextension stellars_jupyterlab_sublime_theme/_version.py",
+        "clean:labextension": "rimraf galaxalabs_jupyterlab_steel_dark_theme/labextension galaxalabs_jupyterlab_steel_dark_theme/_version.py",
         "clean:all": "jlpm clean:lib && jlpm clean:labextension && jlpm clean:lintcache",
         "eslint": "jlpm eslint:check --fix",
         "eslint:check": "eslint . --cache --ext .ts,.tsx",
@@ -89,7 +89,7 @@
     },
     "jupyterlab": {
         "extension": true,
-        "outputDir": "stellars_jupyterlab_sublime_theme/labextension",
+        "outputDir": "galaxalabs_jupyterlab_steel_dark_theme/labextension",
         "themePath": "style/index.css"
     },
     "eslintIgnore": [
