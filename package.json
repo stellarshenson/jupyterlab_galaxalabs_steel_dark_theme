@@ -1,6 +1,6 @@
 {
     "name": "galaxalabs_jupyterlab_steel_dark_theme",
-    "version": "1.0.95",
+    "version": "1.0.96",
     "description": "Dark theme based on Sublime text editor default dark theme, tweaked by Stellars",
     "keywords": [
         "jupyter",
