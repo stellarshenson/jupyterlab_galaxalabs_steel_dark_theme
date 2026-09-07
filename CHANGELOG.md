@@ -4,6 +4,12 @@
 
 <!-- <END NEW CHANGELOG ENTRY> -->
 
+## [1.0.97] - 2026-09-07
+
+### Changed
+
+- No functional change. Released alongside the light siblings so all four Galaxa themes carry a release from the same date. The colourful-tab dark palette is unchanged in this round and the theme never overrode it
+
 ## [1.0.96] - 2026-09-07
 
 ### Changed
