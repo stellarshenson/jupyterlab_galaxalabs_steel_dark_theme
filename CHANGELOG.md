@@ -4,6 +4,12 @@
 
 <!-- <END NEW CHANGELOG ENTRY> -->
 
+## [1.0.96] - 2026-09-07
+
+### Changed
+
+- No functional change. Released alongside the light siblings so all four Galaxa themes carry a release from the same date. Colourful-tab accents verified on screen and by computed style to render identically to stock JupyterLab Dark - the tab bar sits within 3 CIELAB L\* of stock's, so no palette override is needed here
+
 ## [1.0.95] - 2026-09-06
 
 ### Changed
