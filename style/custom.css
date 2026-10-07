@@ -138,4 +138,11 @@ fix: annoying problem of almost invisible text in stderr */
   box-shadow: none !important;
 }
 
+/* galaxalabs customisation - thin scrollbars, the way the MOTD tab draws its own. scrollbar-width is
+ * not inherited, so the rule names every element. The colours stay the theme's: core applies
+ * --jp-scrollbar-thumb-color and --jp-scrollbar-background-color through scrollbar-color. */
+* {
+  scrollbar-width: thin;
+}
+
 /* EOF */

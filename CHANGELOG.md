@@ -4,6 +4,12 @@
 
 <!-- <END NEW CHANGELOG ENTRY> -->
 
+## [1.0.99] - 2026-10-07
+
+### Changed
+
+- Scrollbars are thin. Every scrolling area in JupyterLab now draws the narrow scrollbar that the MOTD tab of `jupyterlab_galaxahub_motd_extension` uses: 10px wide in Chrome, where it was 15px. The thumb and track colours are unchanged
+
 ## [1.0.97] - 2026-09-07
 
 ### Changed
