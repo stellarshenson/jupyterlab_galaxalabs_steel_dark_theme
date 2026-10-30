@@ -70,9 +70,11 @@ jobs:
 
       - name: Base Setup
         uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+        with:
+          python_version: '3.13'
 
       - name: Install dependencies
-        run: python -m pip install -U "jupyterlab>=4.0.0,<5"
+        run: python -m pip install -U "jupyterlab>=4.6,<5"
 
       - name: Install extension
         run: |

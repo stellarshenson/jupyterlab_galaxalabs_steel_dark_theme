@@ -1,12 +1,14 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: v4.3.5
+_commit: v4.6.5
 _src_path: https://github.com/jupyterlab/extension-template
+advanced: false
 author_email: konrad.jelen@gmail.com
 author_name: Konrad Jelen
+has_ai_rules: false
 has_binder: false
 has_settings: false
 kind: theme
-labextension_name: 'galaxalabs_jupyterlab_steel_dark_theme'
+labextension_name: galaxalabs_jupyterlab_steel_dark_theme
 project_short_description: Sublime dark theme tweaked by Stellars
 python_name: galaxalabs_jupyterlab_steel_dark_theme
 repository: ''

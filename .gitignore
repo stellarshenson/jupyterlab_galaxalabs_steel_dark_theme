@@ -15,6 +15,9 @@ galaxalabs_jupyterlab_steel_dark_theme/_version.py
 # Edit at https://www.gitignore.io/?templates=python
 
 ### Python ###
+# Virtual environments
+.venv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -122,3 +125,8 @@ dmypy.json
 
 # Project-local node environment (created by make install_dependencies)
 .nodeenv/
+
+# Run output
+logs/
+tmp/
+junit.xml

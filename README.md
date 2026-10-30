@@ -24,7 +24,7 @@ Sublime dark theme is based upon a popular **Mariana** theme (default dark theme
 
 ## Requirements
 
-- JupyterLab >= 4.0.0
+- JupyterLab >= 4.6.0
 
 ## Install
 

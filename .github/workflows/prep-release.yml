@@ -30,6 +30,8 @@ jobs:
       contents: write
     steps:
       - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+        with:
+          python_version: '3.13'
 
       - name: Prep Release
         id: prep-release

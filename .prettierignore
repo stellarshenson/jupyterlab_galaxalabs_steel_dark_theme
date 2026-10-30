@@ -5,3 +5,6 @@ node_modules
 !/package.json
 galaxalabs_jupyterlab_steel_dark_theme
 .claude
+eslint.config.mjs
+.venv
+.agents
