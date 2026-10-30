@@ -1117,6 +1117,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@stellarshenson/galaxalabs-jupyterlab-steel-dark-theme@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@stellarshenson/galaxalabs-jupyterlab-steel-dark-theme@workspace:."
+  dependencies:
+    "@eslint/js": ^9.39.0
+    "@jupyter/builder": ^1.2.0
+    "@jupyter/eslint-plugin": ^1.4.0
+    "@jupyterlab/application": ^4.6.0
+    "@jupyterlab/apputils": ^4.7.0
+    "@types/json-schema": ^7.0.11
+    "@types/react": ^18.3.0
+    "@types/react-addons-linked-state-mixin": ^0.14.22
+    eslint: ^9.39.0
+    eslint-config-prettier: ^9.1.0
+    eslint-plugin-prettier: ^5.5.0
+    globals: ^15.15.0
+    npm-run-all2: ^7.0.1
+    prettier: ^3.9.0
+    rimraf: ^5.0.10
+    stylelint: ^15.11.0
+    stylelint-config-recommended: ^13.0.0
+    stylelint-config-standard: ^34.0.0
+    stylelint-csstree-validator: ^3.1.0
+    stylelint-prettier: ^4.1.0
+    typescript: ~5.8.0
+    typescript-eslint: ^8.72.0
+    yjs: ^13.6.0
+  languageName: unknown
+  linkType: soft
+
 "@tybys/wasm-util@npm:^0.10.3":
   version: 0.10.4
   resolution: "@tybys/wasm-util@npm:0.10.4"
@@ -2258,36 +2288,6 @@ __metadata:
   checksum: 2b0ff4ce708d99715ad14a6d1f894e2a83242e4a52ccfcefaee5e40050562e5f6dafc1adbb4ce2d4ab47279a45dc736ab91ea5042d843c3c092820dfe032efb1
   languageName: node
   linkType: hard
-
-"galaxalabs_jupyterlab_steel_dark_theme@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "galaxalabs_jupyterlab_steel_dark_theme@workspace:."
-  dependencies:
-    "@eslint/js": ^9.39.0
-    "@jupyter/builder": ^1.2.0
-    "@jupyter/eslint-plugin": ^1.4.0
-    "@jupyterlab/application": ^4.6.0
-    "@jupyterlab/apputils": ^4.7.0
-    "@types/json-schema": ^7.0.11
-    "@types/react": ^18.3.0
-    "@types/react-addons-linked-state-mixin": ^0.14.22
-    eslint: ^9.39.0
-    eslint-config-prettier: ^9.1.0
-    eslint-plugin-prettier: ^5.5.0
-    globals: ^15.15.0
-    npm-run-all2: ^7.0.1
-    prettier: ^3.9.0
-    rimraf: ^5.0.10
-    stylelint: ^15.11.0
-    stylelint-config-recommended: ^13.0.0
-    stylelint-config-standard: ^34.0.0
-    stylelint-csstree-validator: ^3.1.0
-    stylelint-prettier: ^4.1.0
-    typescript: ~5.8.0
-    typescript-eslint: ^8.72.0
-    yjs: ^13.6.0
-  languageName: unknown
-  linkType: soft
 
 "glob-parent@npm:^5.1.2":
   version: 5.1.2

@@ -1,6 +1,6 @@
 {
-    "name": "galaxalabs_jupyterlab_steel_dark_theme",
-    "version": "1.0.102",
+    "name": "@stellarshenson/galaxalabs-jupyterlab-steel-dark-theme",
+    "version": "1.0.104",
     "description": "Dark theme based on Sublime text editor default dark theme, tweaked by Stellars",
     "keywords": [
         "jupyter",
@@ -128,5 +128,8 @@
             "alpha-value-notation": null,
             "color-function-notation": null
         }
+    },
+    "allowScripts": {
+        "@fortawesome/fontawesome-free@5.15.4": true
     }
 }

@@ -8,7 +8,7 @@ has_ai_rules: false
 has_binder: false
 has_settings: false
 kind: theme
-labextension_name: galaxalabs_jupyterlab_steel_dark_theme
+labextension_name: '@stellarshenson/galaxalabs-jupyterlab-steel-dark-theme'
 project_short_description: Sublime dark theme tweaked by Stellars
 python_name: galaxalabs_jupyterlab_steel_dark_theme
 repository: ''

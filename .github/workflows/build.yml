@@ -34,7 +34,7 @@ jobs:
         # pytest -vv -r ap --cov galaxalabs_jupyterlab_steel_dark_theme
 
         jupyter labextension list
-        jupyter labextension list 2>&1 | grep -ie "galaxalabs_jupyterlab_steel_dark_theme.*OK"
+        jupyter labextension list 2>&1 | grep -ie "@stellarshenson/galaxalabs-jupyterlab-steel-dark-theme.*OK"
         python -m jupyterlab.browser_check
 
     - name: Package the extension
@@ -75,5 +75,5 @@ jobs:
         pip install "jupyterlab>=4.6,<5" galaxalabs_jupyterlab_steel_dark_theme*.whl
 
         jupyter labextension list
-        jupyter labextension list 2>&1 | grep -ie "galaxalabs_jupyterlab_steel_dark_theme.*OK"
+        jupyter labextension list 2>&1 | grep -ie "@stellarshenson/galaxalabs-jupyterlab-steel-dark-theme.*OK"
         python -m jupyterlab.browser_check --no-browser-test

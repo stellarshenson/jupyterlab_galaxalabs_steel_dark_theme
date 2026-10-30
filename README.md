@@ -1,7 +1,7 @@
 # GalaxaLabs Steel Dark Theme
 
 [![GitHub Actions](https://github.com/stellarshenson/jupyterlab_galaxalabs_steel_dark_theme/actions/workflows/build.yml/badge.svg)](https://github.com/stellarshenson/jupyterlab_galaxalabs_steel_dark_theme/actions/workflows/build.yml)
-[![npm version](https://img.shields.io/npm/v/galaxalabs_jupyterlab_steel_dark_theme.svg)](https://www.npmjs.com/package/galaxalabs_jupyterlab_steel_dark_theme)
+[![npm version](https://img.shields.io/npm/v/@stellarshenson/galaxalabs-jupyterlab-steel-dark-theme.svg)](https://www.npmjs.com/package/@stellarshenson/galaxalabs-jupyterlab-steel-dark-theme)
 [![PyPI version](https://img.shields.io/pypi/v/galaxalabs-jupyterlab-steel-dark-theme.svg)](https://pypi.org/project/galaxalabs-jupyterlab-steel-dark-theme/)
 [![Total PyPI downloads](https://static.pepy.tech/badge/galaxalabs-jupyterlab-steel-dark-theme)](https://pepy.tech/project/galaxalabs-jupyterlab-steel-dark-theme)
 [![JupyterLab 4](https://img.shields.io/badge/JupyterLab-4-orange.svg)](https://jupyterlab.readthedocs.io/en/stable/)
@@ -104,7 +104,7 @@ pip uninstall galaxalabs_jupyterlab_steel_dark_theme
 
 In development mode, you will also need to remove the symlink created by `jupyter labextension develop`
 command. To find its location, you can run `jupyter labextension list` to figure out where the `labextensions`
-folder is located. Then you can remove the symlink named `galaxalabs_jupyterlab_steel_dark_theme` within that folder.
+folder is located. Then you can remove the symlink named `@stellarshenson/galaxalabs-jupyterlab-steel-dark-theme` within that folder.
 
 ### Packaging the extension
 
