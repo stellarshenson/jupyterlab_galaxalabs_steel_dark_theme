@@ -78,6 +78,9 @@ before-build-npm = [
     "jlpm build:prod"
 ]
 before-build-python = ["jlpm clean:all"]
+# The mock PyPI of the check, pypiserver 2.3.2 on Python 3.13, answers 400 when metadata plus a file part held in memory pass 102400 bytes.
+# Newer pypiserver prints "Listening on" to stderr and jupyter-releaser waits for it on stdout, so the limit is raised in place.
+before-publish-assets = ["""python -c "import pathlib, pypiserver; [f.write_text(f.read_text().replace('MEMFILE_MAX = 102400', 'MEMFILE_MAX = 2 ** 30')) for f in pathlib.Path(pypiserver.__file__).parent.rglob('bottle.py')]" """]
 
 [tool.check-wheel-contents]
 ignore = ["W002"]

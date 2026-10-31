@@ -11,6 +11,6 @@ kind: theme
 labextension_name: '@stellarshenson/galaxalabs-jupyterlab-steel-dark-theme'
 project_short_description: Sublime dark theme tweaked by Stellars
 python_name: galaxalabs_jupyterlab_steel_dark_theme
-repository: ''
+repository: https://github.com/stellarshenson/jupyterlab_galaxalabs_steel_dark_theme
 test: false
 

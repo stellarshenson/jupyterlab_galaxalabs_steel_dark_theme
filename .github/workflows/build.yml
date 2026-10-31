@@ -26,6 +26,12 @@ jobs:
     - name: Install dependencies
       run: python -m pip install -U "jupyterlab>=4.6,<5"
 
+    - name: Lint the extension
+      run: |
+        set -eux
+        jlpm
+        jlpm run lint:check
+
     - name: Build the extension
       run: |
         set -eux
@@ -74,6 +80,21 @@ jobs:
 
         pip install "jupyterlab>=4.6,<5" galaxalabs_jupyterlab_steel_dark_theme*.whl
 
+
         jupyter labextension list
         jupyter labextension list 2>&1 | grep -ie "@stellarshenson/galaxalabs-jupyterlab-steel-dark-theme.*OK"
         python -m jupyterlab.browser_check --no-browser-test
+
+
+  check_links:
+    name: Check Links
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+        with:
+          python_version: '3.13'
+      - uses: jupyterlab/maintainer-tools/.github/actions/check-links@v1
+        with:
+          ignore_links: "https://www.npmjs.com/package/.* https://www.youtube.com/.*"

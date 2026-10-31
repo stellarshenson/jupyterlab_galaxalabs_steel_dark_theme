@@ -44,9 +44,9 @@ jobs:
           branch: ${{ github.event.inputs.branch }}
           since: ${{ github.event.inputs.since }}
           since_last_stable: ${{ github.event.inputs.since_last_stable }}
-          steps_to_skip: "build-changelog"
-        env:
-          RH_SINCE_LAST_STABLE: 'true'
+          steps_to_skip: "build-changelog"  # template-sync: keep
+        env:  # template-sync: keep
+          RH_SINCE_LAST_STABLE: 'true'  # template-sync: keep
 
       - name: "** Next Step **"
         run: |

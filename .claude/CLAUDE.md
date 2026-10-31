@@ -23,7 +23,7 @@ The following workspace rules are STRICTLY ENFORCED for this project:
 
 JupyterLab theme extension providing a dark Sublime Text-inspired color scheme. Current version 1.0.83.
 
-- npm package: `galaxalabs_jupyterlab_steel_dark_theme`
+- npm package: `@stellarshenson/galaxalabs-jupyterlab-steel-dark-theme`
 - PyPI package: `galaxalabs-jupyterlab-steel-dark-theme`
 - GitHub: `stellarshenson/jupyterlab_galaxalabs_steel_dark_theme`
 - Use `make publish` to build and publish to both registries

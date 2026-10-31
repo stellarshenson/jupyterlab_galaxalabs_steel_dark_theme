@@ -1,5 +1,7 @@
 name: Check Release
 on:
+  push:
+    branches: ["master"]
   pull_request:
     branches: ["*"]
 
@@ -20,10 +22,11 @@ jobs:
       - name: Check Release
         uses: jupyter-server/jupyter_releaser/.github/actions/check-release@v2
         with:
+
           token: ${{ secrets.GITHUB_TOKEN }}
-          steps_to_skip: "build-changelog"
-        env:
-          RH_SINCE_LAST_STABLE: 'true'
+          steps_to_skip: "build-changelog"  # template-sync: keep
+        env:  # template-sync: keep
+          RH_SINCE_LAST_STABLE: 'true'  # template-sync: keep
 
       - name: Upload Distributions
         uses: actions/upload-artifact@v4
