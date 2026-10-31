@@ -8,3 +8,4 @@ galaxalabs_jupyterlab_steel_dark_theme
 eslint.config.mjs
 .venv
 .agents
+package-lock.json
