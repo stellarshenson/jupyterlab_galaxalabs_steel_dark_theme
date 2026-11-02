@@ -1,157 +1,35 @@
-# Makefile for Jupyterlab extensions version 1.46
+# Makefile for Jupyterlab extensions version 1.48
 # changelog:
-#   1.46 - increment_version also writes the new version into package-lock.json, in
-#          its top-level `version` and in `packages[""].version`, when the project
-#          has that file, and publish stages it in the metadata commit. 1.41 stopped
-#          writing package-lock.json but the projects kept the file, so the version
-#          recorded there stopped moving. Measured on 2026-10-14: 8 of 48 extensions
-#          with a package-lock.json recorded an older version there than in
-#          package.json, the oldest 1.2.31 against 1.2.73. The two values are replaced
-#          in the text, because 6 of the 48 lockfiles are indented with 4 spaces and a
-#          JSON rewrite would re-indent them. Requested on 2026-10-14.
-#   1.45 - `install` installs every optional-dependencies group of pyproject.toml
-#          with the wheel, so one `make install` leaves the runtime and the optional
-#          dependencies in place. Until now it installed the wheel alone, and the
-#          `dev` and `test` groups stayed as the image had them. Measured on
-#          2026-10-03: a rebuilt container had lost pytest, `make install` reported
-#          success twice, and `make publish` then stopped in `test` with "No module
-#          named '_pytest'". The optional groups are installed in a second pip run
-#          without --force-reinstall, so a build whose groups are already in place
-#          reinstalls none of them. Requested on 2026-10-03.
-#   1.44 - check_dependencies reports pytest missing when the package has a tests/
-#          directory, and install_dependencies then installs the `test` extras that
-#          pyproject.toml lists. `test` has run pytest since 1.36 and `publish` runs
-#          `test` since 1.41, yet no target installed it: a dev env worked only where
-#          the image happened to ship pytest. Measured on 2026-09-30: a Python 3.14
-#          image answered "No module named pytest" after `make install` had reported
-#          success, so `test`, and with it `publish`, had no pytest to run.
-#          Frontend-only extensions (no tests/ directory) are unaffected.
-#   1.43 - the auth gate in `test` loads the source tree being released, not the wheel
-#          the last `make install` left in site-packages: `python script.py` puts only
-#          the script's own directory on sys.path, and `publish` runs `test` before
-#          `install`, so the gate checked the previous build.
-#   1.42 - increment_version moves from `publish` onto `install`, so every
-#          `make install` raises the patch version again, as it did through 1.40.
-#          `publish` reaches it through `install` and still raises it exactly once;
-#          `make build` alone leaves the version as it is. Requested on 2026-09-25.
-#   1.41 - increment_version moves off `build` and onto `publish`; `publish` gains
-#          `test`; the metadata commit and push happen BEFORE either registry is
-#          written to; `npm install` and package-lock.json are dropped.
-#          Measured on 2026-09-20 against jupyterlab_advanced_paste_content_extension.
-#          With increment_version on the build chain, a routine `make install`
-#          rewrote a deliberately pinned 1.0.0, and a build that FAILED in tsc still
-#          consumed the bump - 1.0.0 became 1.0.2 for one artefact that never
-#          existed. No published version can be rebuilt, because building it again
-#          produces the next one. The release path also never reached `test`: the
-#          string `test` appeared nowhere in publish's prerequisite chain, so jest,
-#          pytest and check_auth.py - the gate that exists to catch a handler
-#          missing @tornado.web.authenticated - could not block a release.
-#          `git push` ran AFTER both uploads and aborts outright on a repository
-#          with no remote, leaving npm and PyPI written and the operator reading a
-#          red target; and an npm success followed by a twine failure forks the two
-#          registries permanently, because npm never re-serves a consumed version.
-#          Committing first costs nothing when a later step fails.
-#          `$(NPM) install` ran immediately before `jlpm install`, writing a
-#          package-lock.json that nothing reads - CI installs with jlpm, and npm
-#          honours `overrides` rather than the `resolutions` these projects pin
-#          with. `git add` then named that file, and on a project which never
-#          produces it the add fails on an unmatched pathspec, so the commit and
-#          push never run at all.
-#   1.40 - publish stages yarn.lock in the post-publish commit. It staged only
-#          package.json and package-lock.json, and `git add package.json` takes every
-#          change in that file, so a dependency added since the last commit went out
-#          without its yarn.lock entry. CI installs with an immutable lockfile and
-#          failed both workflows on that commit with YN0028 "The lockfile would have
-#          been modified by this install" (measured on 2026-09-14, release 1.0.12 of
-#          jupyterlab_advanced_markdown_viewer_extension). The staged yarn.lock is the
-#          one `jlpm install` wrote for the build that was published.
-#   1.39 - upgrade no longer runs `npm audit fix --force`; it reports with
-#          `jlpm npm audit --recursive` instead. Measured on six extensions on
-#          2026-09-08: the forced fix rewrote every @jupyterlab/* range to a 0.x
-#          release predating JupyterLab 4 (application ^0.18.6, testutils ^0.2.4,
-#          rendermime ^0.18.4) while printing that it would install 4.6.3, and
-#          because npm updates a yarn.lock it finds, it rewrote the Yarn Berry
-#          lockfile in the Yarn 1 format. Every project had to restore package.json
-#          and both lockfiles from git by hand. Any `npm audit fix`, forced or not,
-#          rewrites yarn.lock the same way, so the target reports advisories and
-#          changes nothing; `jlpm up` remains the one upgrade step. The report exits
-#          1 whenever an advisory stands, hence the `|| true`.
-#   1.38 - keep `python -m build` as the build command, approve blocked npm install
-#          scripts, and audit-fix on upgrade.
-#          A local edit in one project had swapped `python -m build` for
-#          `jupyter-builder build`; canonical 1.37 never carried that. Measured, the
-#          swap breaks the build twice over. jupyter-builder emits
-#          no sdist and no wheel, so nothing populated dist/ - and `install`
-#          (pip install dist/*.whl) plus `publish` (twine upload dist/*) both read
-#          dist/, so publish pushed the npm tarball and then died at twine with the
-#          npm version already consumed and unrepublishable. It also exits 1 outright
-#          when run after `clean`: "Cannot find module lib/index.js", because it never
-#          runs tsc. `python -m build` needs no help - its hatch-jupyter-builder hook
-#          runs the pyproject `build_cmd` (build:prod = tsc + labextension) during the
-#          sdist stage, then builds the wheel from that sdist. Verified from a tree
-#          with no lib/, no labextension/ and no dist/: both artefacts, exit 0.
-#          publish now asserts dist/ holds a wheel and an sdist BEFORE the npm push,
-#          so a broken build cannot desynchronise the two registries.
-#          npm >= 11.6 blocks dependency install scripts until approved and records
-#          the approval in package.json under "allowScripts", so a transitive
-#          package needing a lifecycle script installs unbuilt and fails at runtime.
-#          install_dependencies now approves every package in ALLOW_SCRIPTS_PKGS.
-#          upgrade runs `npm audit fix --force` after `jlpm up`. WARNING: --force
-#          accepts breaking changes, including downgrades - on this project it
-#          proposes @jupyterlab/testutils@0.2.4 in place of ^4.6.3. Review the diff
-#          to package.json and the lockfiles after every upgrade. The trailing
-#          `|| true` is required: npm audit fix exits 1 whenever any advisory
-#          remains unfixed, which is the normal outcome, and would abort the target.
-#          check_dependencies / install_dependencies now also gate the `build` module
-#          and `jlpm` (supplied by the jupyter_builder distribution), the two commands
-#          every build reaches for, so a fresh clone self-heals instead of dying
-#          mid-build on a missing tool.
-#   1.37 - pin the global install prefix to the nodeenv when installing yarn + rimraf.
-#          `npm install -g` honours a user-level `prefix=` in ~/.npmrc even when run
-#          from the nodeenv's own npm, so on any machine that sets one the binaries
-#          landed in that prefix instead of $(NODEENV)/bin. check_dependencies tests
-#          for $(NODEENV)/bin/yarn, which then never became true, so every make
-#          invocation re-ran install_dependencies and reinstalled yarn - it never
-#          reported "All dependencies are installed". Passing --prefix explicitly
-#          overrides the config for that one command and leaves ~/.npmrc untouched.
-#   1.36 - `test` runs the Python suite too, not just jlpm. It ran `jlpm test` alone,
-#          so on any extension with a server side a Python regression passed local
-#          verification and only failed in CI. pytest now runs whenever the package
-#          has a tests/ directory, and is skipped with a message when it does not,
-#          so frontend-only extensions are unaffected. No --cov: coverage is a CI
-#          concern, and requiring pytest-cov would make `make test` fail on an
-#          otherwise working dev env. Also corrects the author address to the
-#          +github alias used everywhere else.
-#   1.35 - resolve node and npm exclusively from the project-local nodeenv via $(NODE)
-#          and $(NPM) instead of bare names, and read VERSION lazily at recipe time
-#          rather than at parse time. VERSION := $(shell command -v node ...) was
-#          evaluated before any target ran, so on a fresh clone (no .nodeenv yet) it
-#          fell back to 0.0.0, increment_version's sed matched nothing, and the build
-#          published the already-published version while printing a successful bump.
-#          It only appeared to work where an ambient node happened to be on PATH.
-#          increment_version now depends on check_dependencies and fails loudly when
-#          the version cannot be read or does not actually change.
-#   1.34 - build formats the lockfiles with `jlpm prettier` (the project's pinned
-#          toolchain) instead of `npx prettier`, which fails with "prettier: Permission
-#          denied" against a yarn-berry node_modules where the .cjs lacks the exec bit
-#   1.33 - check_dependencies now also treats a missing/empty node_modules as a missing
-#          dependency, and install_dependencies runs `jlpm install` to populate it, so
-#          `make install`/`test` self-heal a fresh env without needing a full build first
-#   1.32 - use a project-local nodeenv at .nodeenv/ instead of overwriting the python
-#          prefix via `nodeenv -p` (which used to fail with "Text file busy" when the
-#          existing node binary was held open). PATH=.nodeenv/bin:$PATH is exported so
-#          every target transparently picks up the pinned local node + npm + yarn.
-#          install_dependencies now guards each install step - only what's missing
-#          gets installed. mrproper removes .nodeenv too.
-#   1.31 - mrproper now removes ui-tests/node_modules (Playwright browser binaries)
-#   1.30 - check twine in check_dependencies, ensure publish doesn't fail on missing twine
-#   1.29 - replace yarn with jlpm, add prettier format, auto-commit and push after publish
-#   1.28 - initial versioned Makefile
+#   1.48 - mrproper removes tmp, logs, .venv, graphify-out, coverage and .pytest_cache too; install and publish are .NOTPARALLEL, the guard jupyterlab_vscode_icons_extension carried locally.
+#   1.47 - increment_version takes BUMP none|patch|minor|major; none leaves the version unchanged.
+#   1.46 - increment_version also writes the version into package-lock.json, in the text, and publish stages it.
+#   1.45 - install adds every optional-dependencies group of pyproject.toml in a second pip run without --force-reinstall.
+#   1.44 - check_dependencies reports a missing pytest when the package has tests/, and install_dependencies installs the test extras.
+#   1.43 - the auth gate in test loads the source tree, not the last installed wheel.
+#   1.42 - increment_version moves from publish onto install, so every make install raises the patch version and publish raises it once.
+#   1.41 - increment_version moves off build onto publish; publish gains test; the metadata commit and push happen before either registry; npm install and package-lock.json are dropped.
+#   1.40 - publish stages yarn.lock in the post-publish commit.
+#   1.39 - upgrade reports with jlpm npm audit --recursive instead of npm audit fix --force, which rewrote @jupyterlab ranges to 0.x and the lockfile to Yarn 1 format.
+#   1.38 - keep python -m build as the build command, approve blocked npm install scripts, and assert dist/ holds a wheel and an sdist before the npm push.
+#   1.37 - pin the global install prefix to the nodeenv when installing yarn and rimraf.
+#   1.36 - test runs the Python suite too when the package has tests/, not just jlpm.
+#   1.35 - resolve node and npm from the project-local nodeenv via $(NODE) and $(NPM), and read VERSION lazily.
+#   1.34 - build formats the lockfiles with jlpm prettier instead of npx prettier.
+#   1.33 - check_dependencies treats a missing node_modules as missing, and install_dependencies runs jlpm install.
+#   1.32 - use a project-local nodeenv at .nodeenv/ instead of overwriting the python prefix with nodeenv -p; mrproper removes it.
+#   1.31 - mrproper also removes ui-tests/node_modules.
+#   1.30 - check twine in check_dependencies.
+#   1.29 - replace yarn with jlpm, add prettier format, commit and push after publish.
+#   1.28 - initial versioned Makefile.
 # author: Stellars Henson <konrad.jelen+github@gmail.com>
 # License: MIT Open Source License
 
 .PHONY: build install clean uninstall publish dependencies mrproper increment_version install_dependencies check_dependencies upgrade help test
 .DEFAULT_GOAL := help
+
+# Tests must finish before install, and the version must move before build,
+# including when the caller supplies -j.
+.NOTPARALLEL: install publish
 
 # Project-local node environment - keeps node/npm/yarn pinned per project and out of
 # the python prefix. Created by `install_dependencies` and torn down by `mrproper`.
@@ -159,6 +37,9 @@ NODEENV := $(CURDIR)/.nodeenv
 NODE := $(NODEENV)/bin/node
 NPM := $(NODEENV)/bin/npm
 export PATH := $(NODEENV)/bin:$(PATH)
+
+# Which part of the version `increment_version` raises: none, patch, minor or major.
+BUMP ?= patch
 
 # Read the current version from package.json using the project-local node only.
 # Deliberately lazy (`=`, not `:=`): a parse-time read happens before check_dependencies
@@ -184,7 +65,17 @@ increment_version: check_dependencies
 		exit 1; \
 	fi; \
 	echo "Current version: $$CURRENT_VERSION"; \
-	NEW_VERSION="$${CURRENT_VERSION%.*}.$$(( $${CURRENT_VERSION##*.} + 1 ))"; \
+	MAJOR="$${CURRENT_VERSION%%.*}"; \
+	REST="$${CURRENT_VERSION#*.}"; \
+	MINOR="$${REST%%.*}"; \
+	PATCH="$${REST#*.}"; \
+	case "$(BUMP)" in \
+		none) NEW_VERSION="$$CURRENT_VERSION" ;; \
+		patch) NEW_VERSION="$$MAJOR.$$MINOR.$$((PATCH + 1))" ;; \
+		minor) NEW_VERSION="$$MAJOR.$$((MINOR + 1)).0" ;; \
+		major) NEW_VERSION="$$((MAJOR + 1)).0.0" ;; \
+		*) echo "increment_version: BUMP must be none, patch, minor or major" >&2; exit 1 ;; \
+	esac; \
 	sed -i "s/\"version\": \"$$CURRENT_VERSION\"/\"version\": \"$$NEW_VERSION\"/" package.json; \
 	if ! grep -q "\"version\": \"$$NEW_VERSION\"" package.json; then \
 		echo "increment_version: package.json still reports $$CURRENT_VERSION - not bumped" >&2; \
@@ -339,7 +230,7 @@ upgrade: check_dependencies
 
 ## cleanup all build and metabuild artefacts (including the project-local nodeenv)
 mrproper: clean uninstall
-	rm -rf node_modules .yarn ui-tests/node_modules .nodeenv || true
+	rm -rf node_modules .yarn ui-tests/node_modules .nodeenv tmp logs .venv graphify-out coverage .pytest_cache || true
 
 ## prints the list of available commands
 help:
