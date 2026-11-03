@@ -2,6 +2,12 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## [1.0.109] - 2026-11-03
+
+### Changed
+
+- Released with the other Stellars themes and no style change: the theme already draws one line between a docked panel's title band and its first section band
+
 ## [1.0.108] - 2026-10-31
 
 ### Changed
