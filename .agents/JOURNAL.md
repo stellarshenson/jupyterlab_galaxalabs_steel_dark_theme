@@ -78,3 +78,6 @@ This journal tracks substantive work on documents, diagrams, and documentation c
 
 25. **Task - Release with the theme set after the band divider check** (v1.0.109): released with the other four Stellars themes on the owner's order of 2026-11-03, with no source change<br>
     **Result**: `jupyterlab_bookmarks_extension` now draws a divider above its first section band, so the five themes were measured in headless Chrome against JupyterLab 4.6.5 with the installed 1.0.108. This theme already gives one 1 px line between a docked panel's title band and its first section band: row y61 `#252b32` between two `#404b54` bands with the filter closed and after a scroll, and row y93 `#252b32` below the filter box with the filter open, each across all 250 panel columns. `style/variables.css` stays unchanged; Steel Light and Titanium Dark changed `--jp-border-color2` in the same campaign. Measurement: `render-themes.md` under `tmp/workflows/band-divider` of the bookmarks extension.
+
+26. **Task [Short] - Ignore the PayPal donate link in the link check** (v1.0.109): appended `https://www.paypal.com/.*` to `ignore_links` in `.github/workflows/build.yml`<br>
+    **Result**: The donate link answers 403 to the GitHub runner; Check Links has failed since 19ab4b1. Same pattern as Steel Light and Mechanicum Dark.

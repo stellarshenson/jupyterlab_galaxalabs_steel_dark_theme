@@ -97,4 +97,4 @@ jobs:
           python_version: '3.13'
       - uses: jupyterlab/maintainer-tools/.github/actions/check-links@v1
         with:
-          ignore_links: "https://www.npmjs.com/package/.* https://www.youtube.com/.*"
+          ignore_links: "https://www.npmjs.com/package/.* https://www.youtube.com/.* https://www.paypal.com/.*"
